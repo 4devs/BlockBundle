@@ -1,0 +1,43 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <parameters>
+        <parameter key="f_devs_block.admin_block.class">FDevs\BlockBundle\Sonata\Admin\BlockAdmin</parameter>
+        <parameter key="f_devs_block.service.block.class">FDevs\BlockBundle\Sonata\Block\Service\BlockService</parameter>
+        <parameter key="f_devs_block.admin.groupname">Block</parameter>
+        <parameter key="f_devs_block.admin.label_catalogue">FDevsBlockBundle</parameter>
+        <parameter key="f_devs_block.admin.block.document">FDevs\BlockBundle\Model\Block</parameter>
+        <parameter key="f_devs_block.admin.translation_domain">FDevsBlockBundle</parameter>
+    </parameters>
+
+    <services>
+        <service id="f_devs_block.admin_block" class="%f_devs_block.admin_block.class%">
+            <tag name="sonata.admin" label_catalogue="%f_devs_block.admin.label_catalogue%"
+                 manager_type="doctrine_mongodb" group="%f_devs_block.admin.groupname%" label="block"/>
+            <argument/>
+            <argument>%f_devs_block.admin.block.document%</argument>
+            <argument/>
+            <call method="setTranslationDomain">
+                <argument>%f_devs_block.admin.translation_domain%</argument>
+            </call>
+            <call method="setPredefinedBlocks">
+                <argument>%f_devs_block.predefined_blocks%</argument>
+            </call>
+        </service>
+
+        <service id="f_devs_block.service.block" class="%f_devs_block.service.block.class%">
+            <tag name="sonata.block" />
+            <argument>f_devs_block.service.block</argument>
+            <argument type="service" id="templating" />
+            <call method="setObjectManager">
+                <argument type="service" id="doctrine_mongodb"/>
+                <argument type="string">%f_devs_block.admin.block.document%</argument>
+            </call>
+        </service>
+
+    </services>
+
+</container>

@@ -1,0 +1,31 @@
+{
+    "name": "fdevs/block-bundle",
+    "license": "MIT",
+    "type": "symfony-bundle",
+    "description": "Symfony Bundle for sonata block",
+    "homepage": "https://github.com/4devs/BlockBundle",
+    "keywords": ["sonata", "block"],
+    "authors": [
+        {
+            "name": "Samusev Andrey",
+            "email": "andrey_simfi@list.ru",
+            "homepage": "http://andrey.4devs.io/"
+        },
+        {
+            "name": "4devs Community",
+            "homepage": "https://github.com/4devs/BlockBundle/contributors"
+        }
+    ],
+    "require": {
+        "php": ">=5.4",
+        "symfony/symfony": "2.5.*",
+        "doctrine/collections": "~1.2",
+        "sonata-project/block-bundle": "~2.0",
+        "twig/extensions": "~1.0",
+        "fdevs/page-bundle": "~1.0"
+    },
+    "autoload": {
+        "psr-0": { "FDevs\\BlockBundle": "" }
+    },
+    "target-dir": "FDevs/BlockBundle"
+}

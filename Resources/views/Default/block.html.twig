@@ -1,0 +1,13 @@
+{% extends sonata_block.templates.block_base %}
+
+{% block block %}
+    {% spaceless %}
+        <div id="fdevs-block-{{ data.id }}">
+            <h3 class="block-title">{{ data.title|t }}</h3>
+
+            <div class="block-container text-justify">
+                {{ data.content|t }}
+            </div>
+        </div>
+    {% endspaceless %}
+{% endblock %}
