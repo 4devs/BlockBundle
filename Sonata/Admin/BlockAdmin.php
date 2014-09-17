@@ -33,6 +33,8 @@ class BlockAdmin extends Admin
     {
         $subject = $this->getSubject();
         $options = [];
+        $formMapper->with('form.group_block_content',['translation_domain' => 'FDevsBlockBundle']);
+
         if ($subject->getId()) {
             $options['read_only'] = true;
             $formMapper->add('id', 'text', $options);
@@ -41,7 +43,7 @@ class BlockAdmin extends Admin
             $formMapper->add('id', 'choice', $options);
         }
 
-        $formMapper->add('content', 'translatable', ['type' => 'ckeditor']);
+        $formMapper->add('content', 'translatable', ['type' => 'ckeditor'])->end();
 
     }
 
