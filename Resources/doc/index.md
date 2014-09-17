@@ -62,6 +62,12 @@ f_devs_block:
             label: 'Team'
             template: 'AcmeDemoBundle:Block:team.html.twig'
 
+#add Sonata Block Type
+sonata_block:
+    blocks:
+    #...
+        f_devs_block.service.block:
+
 #add Sonata Admins Edits
 sonata_admin:
     dashboard:
