@@ -12,21 +12,32 @@ class BlockService extends BaseBlockService
 {
     /** @var \Doctrine\Common\Persistence\ObjectManager */
     private $manager;
+
     /** @var  string */
     private $className;
+
+    /** @var array */
+    private $predefinedBlocks = [];
+
+    /** @var string */
+    private $defaultTemplate = 'FDevsBlockBundle:Default:block.html.twig';
 
     /**
      * {@inheritDoc}
      */
     public function execute(BlockContextInterface $blockContext, Response $response = null)
     {
-        $data = $this->getDataById($blockContext->getSetting('id'));
+        $id = $blockContext->getSetting('id');
+        $data = $this->getDataById($id);
+        $template = $blockContext->getTemplate();
 
-        return $data ? $this->renderResponse(
-            $blockContext->getTemplate(),
-            ['data' => $data, 'block' => $blockContext->getBlock()],
-            $response
-        ) : new Response('');
+        if ($template == $this->defaultTemplate && !empty($this->predefinedBlocks[$id])) {
+            $template = $this->predefinedBlocks[$id]['template'];
+        }
+
+        return $data
+            ? $this->renderResponse($template, ['data' => $data, 'block' => $blockContext->getBlock()], $response)
+            : new Response('');
     }
 
     /**
@@ -37,7 +48,7 @@ class BlockService extends BaseBlockService
         $resolver
             ->setRequired(['id'])
             ->setOptional(['template'])
-            ->setDefaults(['template' => 'FDevsBlockBundle:Default:block.html.twig'])
+            ->setDefaults(['template' => $this->defaultTemplate])
             ->setAllowedTypes(['id' => 'string', 'template' => 'string']);
     }
 
@@ -51,6 +62,34 @@ class BlockService extends BaseBlockService
     public function getDataById($id)
     {
         return $this->manager->getRepository($this->className)->find($id);
+    }
+
+    /**
+     * set Predefined Blocks
+     *
+     * @param array $predefinedBlocks
+     *
+     * @return self
+     */
+    public function setPredefinedBlocks(array $predefinedBlocks = [])
+    {
+        $this->predefinedBlocks = $predefinedBlocks;
+
+        return $this;
+    }
+
+    /**
+     * set Default Template
+     *
+     * @param string $defaultTemplate
+     *
+     * @return self
+     */
+    public function setDefaultTemplate($defaultTemplate)
+    {
+        $this->defaultTemplate = $defaultTemplate;
+
+        return $this;
     }
 
     /**

@@ -36,6 +36,7 @@
                 <argument type="service" id="doctrine_mongodb"/>
                 <argument type="string">%f_devs_block.admin.block.document%</argument>
             </call>
+            <call method="setPredefinedBlocks"><argument>%f_devs_block.predefined_blocks%</argument></call>
         </service>
 
     </services>
