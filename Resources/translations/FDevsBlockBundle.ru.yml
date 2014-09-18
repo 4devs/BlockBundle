@@ -1,0 +1,5 @@
+form:
+    group_block_content: 'Блок'
+
+label:
+    block: "Блок содержимого"
