@@ -25,7 +25,6 @@
         "fdevs/page-bundle": "~1.0"
     },
     "autoload": {
-        "psr-0": { "FDevs\\BlockBundle": "" }
-    },
-    "target-dir": "FDevs/BlockBundle"
+        "psr-4": { "FDevs\\BlockBundle\\": "" }
+    }
 }
