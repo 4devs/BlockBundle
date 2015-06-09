@@ -3,28 +3,29 @@
 namespace FDevs\BlockBundle\Model;
 
 use Doctrine\Common\Collections\ArrayCollection;
-use FDevs\PageBundle\Model\LocaleText;
-use FDevs\PageBundle\Model\Page;
+use Doctrine\Common\Collections\Collection;
+use FDevs\Locale\Model\LocaleText;
 
-class Block extends Page
+class Block
 {
     /**
      * @var string
      */
     protected $id;
 
-    /**
-     * @var ArrayCollection
-     */
+    /** @var Collection|LocaleText[] */
     protected $content;
+
+    /** @var Collection|LocaleText[] */
+    protected $title;
 
     /**
      * init
      */
     public function __construct()
     {
-        parent::__construct();
         $this->content = new ArrayCollection();
+        $this->title = new ArrayCollection();
     }
 
     /**
@@ -40,7 +41,7 @@ class Block extends Page
     /**
      * set Content
      *
-     * @param LocaleText[] $content
+     * @param Collection|array|LocaleText[] $content
      *
      * @return $this
      */
@@ -71,7 +72,7 @@ class Block extends Page
     /**
      * Remove name
      *
-     * @param \FDevs\PageBundle\Model\LocaleText $text
+     * @param LocaleText $text
      */
     public function removeContent(LocaleText $text)
     {
@@ -98,6 +99,45 @@ class Block extends Page
     public function setId($id)
     {
         $this->id = $id;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|\FDevs\Locale\Model\LocaleText[]
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    /**
+     * set Title
+     *
+     * @param Collection|array|LocaleText[] $title
+     *
+     * @return $this
+     */
+    public function setTitle($title)
+    {
+        $this->title = new ArrayCollection();
+        foreach ($title as $text) {
+            $this->addTitle($text);
+        }
+
+        return $this;
+    }
+
+    /**
+     * add title
+     *
+     * @param LocaleText $text
+     *
+     * @return $this
+     */
+    public function addTitle(LocaleText $text)
+    {
+        $this->title->add($text);
 
         return $this;
     }

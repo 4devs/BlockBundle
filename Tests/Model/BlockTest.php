@@ -3,7 +3,7 @@
 namespace FDevs\BlockBundle\Tests\Model;
 
 use FDevs\BlockBundle\Model\Block;
-use FDevs\PageBundle\Model\LocaleText;
+use FDevs\Locale\Model\LocaleText;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 class BlockTest extends WebTestCase
@@ -18,7 +18,7 @@ class BlockTest extends WebTestCase
         $text = new LocaleText();
         $model->addContent($text);
         $this->assertCount(1, $model->getContent());
-        $this->assertInstanceOf('\FDevs\PageBundle\Model\LocaleText', $model->getContent()->first());
+        $this->assertInstanceOf('\FDevs\Locale\Model\LocaleText', $model->getContent()->first());
         $this->assertEquals($text, $model->getContent()->first());
 
     }
