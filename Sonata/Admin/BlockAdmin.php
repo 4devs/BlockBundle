@@ -45,7 +45,7 @@ class BlockAdmin extends Admin
 
         $formMapper
             ->add('title', 'trans_text')
-            ->add('content', 'trans_textarea', ['type' => 'ckeditor'])
+            ->add('content', 'trans_textarea', ['options' => ['type' => 'ckeditor']])
             ->end();
 
     }
