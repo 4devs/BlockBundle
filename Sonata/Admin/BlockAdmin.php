@@ -2,12 +2,12 @@
 
 namespace FDevs\BlockBundle\Sonata\Admin;
 
-use Sonata\AdminBundle\Admin\Admin;
+use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Route\RouteCollection;
 
-class BlockAdmin extends Admin
+class BlockAdmin extends AbstractAdmin
 {
     /** @var array */
     private $predefinedBlocks = [];

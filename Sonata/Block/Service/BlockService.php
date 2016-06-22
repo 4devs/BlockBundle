@@ -6,6 +6,7 @@ use Doctrine\Common\Persistence\ManagerRegistry;
 use Sonata\BlockBundle\Block\BaseBlockService;
 use Sonata\BlockBundle\Block\BlockContextInterface;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class BlockService extends BaseBlockService
@@ -20,7 +21,7 @@ class BlockService extends BaseBlockService
     private $predefinedBlocks = [];
 
     /** @var string */
-    private $defaultTemplate = 'FDevsBlockBundle:Default:block.html.twig';
+    private $defaultTemplate = '@FDevsBlock/Default/block.html.twig';
 
     /**
      * {@inheritDoc}
@@ -43,11 +44,11 @@ class BlockService extends BaseBlockService
     /**
      * {@inheritDoc}
      */
-    public function setDefaultSettings(OptionsResolverInterface $resolver)
+    public function configureSettings(OptionsResolver $resolver)
     {
         $resolver
             ->setRequired(['id'])
-            ->setOptional(['template'])
+            ->setDefined(['template'])
             ->setDefaults(['template' => $this->defaultTemplate])
             ->setAllowedTypes(['id' => 'string', 'template' => 'string']);
     }
