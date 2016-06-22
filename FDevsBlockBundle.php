@@ -9,7 +9,7 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
 class FDevsBlockBundle extends Bundle
 {
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function build(ContainerBuilder $container)
     {
@@ -23,7 +23,7 @@ class FDevsBlockBundle extends Bundle
      */
     private function addRegisterMappingsPass(ContainerBuilder $container)
     {
-        $mappings = [realpath(__DIR__ . '/Resources/config/doctrine/model') => 'FDevs\BlockBundle\Model'];
+        $mappings = [realpath(__DIR__.'/Resources/config/doctrine/model') => 'FDevs\BlockBundle\Model'];
 
         if (class_exists('Doctrine\Bundle\MongoDBBundle\DependencyInjection\Compiler\DoctrineMongoDBMappingsPass')) {
             $container->addCompilerPass(
@@ -34,7 +34,5 @@ class FDevsBlockBundle extends Bundle
                 )
             );
         }
-
     }
-
 }

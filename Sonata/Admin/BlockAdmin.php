@@ -13,7 +13,7 @@ class BlockAdmin extends AbstractAdmin
     private $predefinedBlocks = [];
 
     /**
-     * set Predefined Blocks
+     * set Predefined Blocks.
      *
      * @param array $blocks
      *
@@ -47,7 +47,6 @@ class BlockAdmin extends AbstractAdmin
             ->add('title', 'trans_text')
             ->add('content', 'trans_textarea', ['options' => ['type' => 'ckeditor']])
             ->end();
-
     }
 
     /**
@@ -70,7 +69,7 @@ class BlockAdmin extends AbstractAdmin
     }
 
     /**
-     * get Choices
+     * get Choices.
      *
      * @return array
      */

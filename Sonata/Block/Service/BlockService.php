@@ -7,7 +7,6 @@ use Sonata\BlockBundle\Block\BaseBlockService;
 use Sonata\BlockBundle\Block\BlockContextInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class BlockService extends BaseBlockService
 {
@@ -24,7 +23,7 @@ class BlockService extends BaseBlockService
     private $defaultTemplate = '@FDevsBlock/Default/block.html.twig';
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function execute(BlockContextInterface $blockContext, Response $response = null)
     {
@@ -42,7 +41,7 @@ class BlockService extends BaseBlockService
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function configureSettings(OptionsResolver $resolver)
     {
@@ -54,7 +53,7 @@ class BlockService extends BaseBlockService
     }
 
     /**
-     * get Block Data by Id
+     * get Block Data by Id.
      *
      * @param $id
      *
@@ -66,7 +65,7 @@ class BlockService extends BaseBlockService
     }
 
     /**
-     * set Predefined Blocks
+     * set Predefined Blocks.
      *
      * @param array $predefinedBlocks
      *
@@ -80,7 +79,7 @@ class BlockService extends BaseBlockService
     }
 
     /**
-     * set Default Template
+     * set Default Template.
      *
      * @param string $defaultTemplate
      *
@@ -94,7 +93,7 @@ class BlockService extends BaseBlockService
     }
 
     /**
-     * set Object Manager
+     * set Object Manager.
      *
      * @param ManagerRegistry $manager
      * @param string          $className

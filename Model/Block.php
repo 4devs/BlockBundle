@@ -20,7 +20,7 @@ class Block
     protected $title;
 
     /**
-     * init
+     * init.
      */
     public function __construct()
     {
@@ -29,7 +29,7 @@ class Block
     }
 
     /**
-     * get Content
+     * get Content.
      *
      * @return LocaleText[]
      */
@@ -39,7 +39,7 @@ class Block
     }
 
     /**
-     * set Content
+     * set Content.
      *
      * @param Collection|array|LocaleText[] $content
      *
@@ -56,7 +56,7 @@ class Block
     }
 
     /**
-     * add Content
+     * add Content.
      *
      * @param LocaleText $text
      *
@@ -70,7 +70,7 @@ class Block
     }
 
     /**
-     * Remove name
+     * Remove name.
      *
      * @param LocaleText $text
      */
@@ -80,7 +80,7 @@ class Block
     }
 
     /**
-     * get Id
+     * get Id.
      *
      * @return string
      */
@@ -90,7 +90,7 @@ class Block
     }
 
     /**
-     * set Id
+     * set Id.
      *
      * @param string $id
      *
@@ -112,7 +112,7 @@ class Block
     }
 
     /**
-     * set Title
+     * set Title.
      *
      * @param Collection|array|LocaleText[] $title
      *
@@ -129,7 +129,7 @@ class Block
     }
 
     /**
-     * add title
+     * add title.
      *
      * @param LocaleText $text
      *
