@@ -2,10 +2,15 @@
 
 namespace FDevs\BlockBundle\Sonata\Admin;
 
+use FDevs\Locale\Form\Type\TransTextareaType;
+use FDevs\Locale\Form\Type\TransTextType;
+use Ivory\CKEditorBundle\Form\Type\CKEditorType;
 use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Route\RouteCollection;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 class BlockAdmin extends AbstractAdmin
 {
@@ -37,15 +42,15 @@ class BlockAdmin extends AbstractAdmin
 
         if ($subject->getId()) {
             $options['read_only'] = true;
-            $formMapper->add('id', 'text', $options);
+            $formMapper->add('id', TextType::class, $options);
         } else {
             $options['choices'] = $this->getChoices();
-            $formMapper->add('id', 'choice', $options);
+            $formMapper->add('id', ChoiceType::class, $options);
         }
 
         $formMapper
-            ->add('title', 'trans_text')
-            ->add('content', 'trans_textarea', ['options' => ['type' => 'ckeditor']])
+            ->add('title', TransTextType::class)
+            ->add('content', TransTextareaType::class, ['options' => ['type' => CKEditorType::class]])
             ->end();
     }
 
